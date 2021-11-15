@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"service/internal/config"
 	"service/internal/controller"
+	"service/internal/infrastructure/database"
 	"service/internal/infrastructure/http"
 	"service/internal/repository"
 	"service/internal/service"
@@ -23,6 +24,12 @@ func (c *Container) Configuration() error {
 		return err
 	}
 	if err := c.Container.Provide(http.NewHttpServer); err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	// database
+	if err := c.Container.Provide(database.NewServerDB); err != nil {
 		fmt.Println(err)
 		return err
 	}

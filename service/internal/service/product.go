@@ -40,6 +40,6 @@ func (s *ProductService) List() (*[]model.Product, error) {
 	return productList, nil
 }
 
-func (s *ProductService) Get(id string) (*model.Product, error) {
+func (s *ProductService) Get(id uint) (*model.Product, error) {
 	return nil, nil
 }

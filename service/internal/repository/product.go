@@ -34,9 +34,21 @@ func (s *ProductRepository) Create(product *model.Product) (bool, error) {
 }
 
 func (s *ProductRepository) List() (*[]model.Product, error) {
-	return &productList, nil
+	var products []model.Product
+	result := s.Db.Connection.Find(&products)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &products, nil
 }
 
-func (s *ProductRepository) Get(id string) (*model.Product, error) {
-	return nil, nil
+func (s *ProductRepository) Get(id uint) (*model.Product, error) {
+	var user model.Product
+
+	result := s.Db.Connection.Where("id = ?", id).First(&user)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return &user, nil
 }

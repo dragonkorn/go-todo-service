@@ -12,11 +12,13 @@ type HttpServer struct {
 	Config      *config.Configuration
 	route       *gin.Engine
 	ProductCtrl *controller.ProductController
+	UserCtrl *controller.UserController
 }
 
 func NewHttpServer(
 	cfg *config.Configuration,
 	productCtrl *controller.ProductController,
+	userCtrl *controller.UserController,
 ) *HttpServer {
 	fmt.Println("http  new server called")
 	r := gin.New()
@@ -24,6 +26,7 @@ func NewHttpServer(
 		Config:      cfg,
 		route:       r,
 		ProductCtrl: productCtrl,
+		UserCtrl: userCtrl,
 	}
 }
 
@@ -46,6 +49,10 @@ func (s *HttpServer) Configuration() *gin.Engine {
 	{
 		product.POST("/", s.ProductCtrl.Create)
 		product.GET("/", s.ProductCtrl.List)
+	}
+	user := r.Group("/user")
+	{
+		user.POST("/", s.UserCtrl.CreateUser)
 	}
 
 	return r

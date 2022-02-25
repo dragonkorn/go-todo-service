@@ -46,7 +46,6 @@ func (c *ProductController) Create(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"result": result,
 	})
-	return
 }
 
 func (c *ProductController) List(ctx *gin.Context) {

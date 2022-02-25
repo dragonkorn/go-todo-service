@@ -8,7 +8,7 @@ import (
 
 type Configuration struct {
 	Port         string `env:"PORT" envDefault:"8000"`
-	DbConnection string `env:"DB_CONNECTION" envDefault:"host=localhost user=postgres password=password dbname=postgres port=5432 sslmode=disable"`
+	DbConnection string `env:"DB_CONNECTION" envDefault:"host=localhost user=user password=password dbname=todo port=5432 sslmode=disable"`
 	IsDbDebug    bool   `env:"IS_DB_DEBUG" envDefault:"true"`
 }
 

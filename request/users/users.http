@@ -1,0 +1,18 @@
+POST http://localhost:8000/user HTTP/1.1
+content-type: application/json
+
+{
+    "id": 1,
+    "username": "userTest01",
+    "mobileNo": "0807654321"
+}
+
+
+####
+
+POST http://localhost:8000/product HTTP/1.1
+content-type: application/json
+
+{
+    "name": "car"
+}

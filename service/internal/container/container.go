@@ -39,15 +39,27 @@ func (c *Container) Configuration() error {
 		fmt.Println(err)
 		return err
 	}
+	if err := c.Container.Provide(controller.NewUserController); err != nil {
+		fmt.Println(err)
+		return err
+	}
 
 	// Service
 	if err := c.Container.Provide(service.NewProductService); err != nil {
 		fmt.Println(err)
 		return err
 	}
+	if err := c.Container.Provide(service.NewUserService); err != nil {
+		fmt.Println(err)
+		return err
+	}
 
 	// Repository
 	if err := c.Container.Provide(repository.NewProductRepository); err != nil {
+		fmt.Println(err)
+		return err
+	}
+	if err := c.Container.Provide(repository.NewUserRepository); err != nil {
 		fmt.Println(err)
 		return err
 	}
